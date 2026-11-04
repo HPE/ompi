@@ -21,6 +21,7 @@
 # Copyright (c) 2018      FUJITSU LIMITED.  All rights reserved.
 # Copyright (c) 2021      Amazon.com, Inc. or its affiliates.  All Rights
 #                         reserved.
+# Copyright (c) 2026      Hewlett Packard Enterprise Development LP. All rights reserved.
 # $COPYRIGHT$
 #
 # Additional copyrights may follow
@@ -186,6 +187,11 @@ include mpiext/Makefile.am
 include mca/Makefile.am
 include util/Makefile.am
 include instance/Makefile.am
+
+# After every include, so libmpi and ompi_info exist before these tests link and run.
+if HWPC_CXI_ENABLE
+SUBDIRS += mca/hook/hwpc_cxi/test
+endif
 
 distclean-local:
 	rm -f mpiext/static-components.h
