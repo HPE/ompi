@@ -11,7 +11,7 @@
 #
 # $HEADER$
 #
-# Check that component-private constants helpers do not leak from libopen_mpi.
+# Check that component-private constants helpers do not leak from libmpi.
 
 set -eu
 
@@ -37,7 +37,7 @@ if ! grep '^#define OPAL_C_HAVE_VISIBILITY 1' "$config_header" >/dev/null 2>&1; 
     exit 0
 fi
 
-for candidate in "$libdir/libopen_mpi.so" "$libdir/libopen_mpi.dylib"; do
+for candidate in "$libdir/libmpi.so" "$libdir/libmpi.dylib"; do
     if [ -f "$candidate" ]; then
         library="$candidate"
         break
@@ -45,7 +45,7 @@ for candidate in "$libdir/libopen_mpi.so" "$libdir/libopen_mpi.dylib"; do
 done
 
 if [ -z "$library" ]; then
-    echo "SKIP: no shared libopen_mpi found (static-only build)"
+    echo "SKIP: no shared libmpi found (static-only build)"
     exit 0
 fi
 
@@ -81,7 +81,7 @@ leaked_symbols=$(printf '%s\n' "$symbols" | awk '
 ' | sort -u)
 
 if [ -n "$leaked_symbols" ]; then
-    echo "ERROR: HWPC-CXI private symbols exported from libopen_mpi:" >&2
+    echo "ERROR: HWPC-CXI private symbols exported from libmpi:" >&2
     printf '%s\n' "$leaked_symbols" | sed 's/^/    /' >&2
     exit 1
 fi

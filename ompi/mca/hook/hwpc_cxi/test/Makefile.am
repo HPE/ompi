@@ -13,7 +13,6 @@
 
 # Unit tests for the hwpc_cxi hook module, run by make check.
 # The MPI_Init() tests skip (exit 77) on nodes without a Cassini device.
-include $(top_srcdir)/Makefile.mca-dso-check
 
 EXTRA_DIST = check_hwpc_cxi_dynamic_symbols.sh check_hwpc_cxi_mca_params.sh
 
@@ -52,7 +51,6 @@ check-hwpc-cxi-mca-params:
     hwpc_cxi_counters_test_CPPFLAGS = $(AM_CPPFLAGS)
     hwpc_cxi_counters_test_LDFLAGS = $(OMPI_PKG_CONFIG_LDFLAGS)
     hwpc_cxi_counters_test_LDADD = \
-        $(top_builddir)/ompi/libopen_mpi.la \
         $(top_builddir)/ompi/lib@OMPI_LIBMPI_NAME@.la \
         $(top_builddir)/opal/lib@OPAL_LIB_NAME@.la
 
@@ -93,27 +91,21 @@ check-hwpc-cxi-mca-params:
     hwpc_cxi_mpi_t_pvars_enabled_test_LDFLAGS = $(OMPI_PKG_CONFIG_LDFLAGS)
 
     hwpc_cxi_mpi_init_finalize_level_0_test_LDADD = \
-        $(top_builddir)/ompi/libopen_mpi.la \
         $(top_builddir)/ompi/lib@OMPI_LIBMPI_NAME@.la \
         $(top_builddir)/opal/lib@OPAL_LIB_NAME@.la
     hwpc_cxi_mpi_init_finalize_level_1_test_LDADD = \
-        $(top_builddir)/ompi/libopen_mpi.la \
         $(top_builddir)/ompi/lib@OMPI_LIBMPI_NAME@.la \
         $(top_builddir)/opal/lib@OPAL_LIB_NAME@.la
     hwpc_cxi_mpi_init_finalize_level_2_test_LDADD = \
-        $(top_builddir)/ompi/libopen_mpi.la \
         $(top_builddir)/ompi/lib@OMPI_LIBMPI_NAME@.la \
         $(top_builddir)/opal/lib@OPAL_LIB_NAME@.la
     hwpc_cxi_mpi_init_finalize_level_5_test_LDADD = \
-        $(top_builddir)/ompi/libopen_mpi.la \
         $(top_builddir)/ompi/lib@OMPI_LIBMPI_NAME@.la \
         $(top_builddir)/opal/lib@OPAL_LIB_NAME@.la
     hwpc_cxi_mpi_t_pvars_test_LDADD = \
-        $(top_builddir)/ompi/libopen_mpi.la \
         $(top_builddir)/ompi/lib@OMPI_LIBMPI_NAME@.la \
         $(top_builddir)/opal/lib@OPAL_LIB_NAME@.la
     hwpc_cxi_mpi_t_pvars_enabled_test_LDADD = \
-        $(top_builddir)/ompi/libopen_mpi.la \
         $(top_builddir)/ompi/lib@OMPI_LIBMPI_NAME@.la \
         $(top_builddir)/opal/lib@OPAL_LIB_NAME@.la
 
